@@ -35,22 +35,25 @@ TripPlanner - JAVA application for helping people choose where to go on vacation
 	see how it is working.
 
 4.Implementation:
-	This project includes: all source files(.java), resource files(.properties) and this README.
-	The way I saw this problem: I have the entities Vacation, Location, Activity, Availability.
-	A Vacation object would have a Location, a set of Activities to perform and an Availability.
+	This project includes: all source files(.java), resource files(.properties) and this
+	README.
+	The way I saw this problem: I have the entities Vacation, Location, Activity and 
+	Availability. 
+	A Vacation object would have a Location, a set of Activities to perform and an 
+	Availability.
 	
-	An Availability object represents the season one vacation is available. For an easy work with
-	this class I used the season reported to this year. Therefore, I used 2 dates describing an 
-	interval, and that made my work easy with intersections.
+	An Availability object represents the season one vacation is available. For an easy 
+	work with this class I used the season reported to this year. Therefore, I used 2 dates
+	describing an interval, and that made my work easy with intersections.
 
-	Activity is an enum because I wanted activities to be part of some possible values, so that
-	all vacations will "speak the same language" in the matter of activities. Doing so, made my
-	query work easy. A Vacation object has, thus, an enumset of Activities.
+	Activity is an enum because I wanted activities to be part of some possible values,
+	so that	all vacations will "speak the same language" in the matter of activities. Doing
+	so, made my query work easy. A Vacation object has, thus, an enumset of Activities.
 
 	Other than those above and name and price, a Vacation must have a Location. To rank 
-	locations I chose to build a tree, having the root named "globe". I have a class Node that
-	implements the basic functions of a node. I search trough this tree to find the right
-	place to insert my locations read from input. The leaf nodes have a list of the 
+	locations I chose to build a tree, having the root named "globe". I have a class Node 
+	that implements the basic functions of a node. I search trough this tree to find the
+	right place to insert my locations read from input. The leaf nodes have a list of the 
 	vacations available there. My Vacation class has a reference to a Node in my tree.
 
 	I used 2 parser clases, for parsing input and parsing and executing commands.
