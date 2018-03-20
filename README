@@ -1,0 +1,66 @@
+
+TripPlanner - JAVA application for helping people choose where to go on vacation
+
+1.Use cases:
+	1.1 vacation command:
+		vacation europe - lists all vacations available in europe
+		vacation italy - lists all vacations available in italy
+		vacation athens - list all vacations available in athens
+		vacation colloseum - display vacation with this name if available
+	vacation receives a continent, country or a city as argument or a vacation name.
+	
+	1.2 top command:
+		top europe - lists top 5, if any, cheapest vacations in europe
+		top europe 15-march:20-march - lists top 5, if any, cheapest vacation in europe
+						in the available period
+		NOTE: the date is introduced as above: day-month:day-month, otherwise an error
+		message will be generated.
+	
+	1.3 cheapest command:
+		cheapest swimming - displays cheapest place where you can swim for 10 days
+	1.4 menu command:
+		showing command options
+
+	NOTE: any other command different from those above will generate an error message.
+	NOTE: wrong command parameters will generate an error message.
+
+2.Language: This app is available both in english and romanian. At the beginning you can
+	choose your language.
+	NOTE: the messages displayed will be in your language, but the commands and the name
+	of the locations will be provided in english.
+ 
+3.Testing:
+	I have tested this app with 2 input files. One which has 10 locations and very different
+	data, and the other one that has 10000 locations. I've attached a command input file to
+	see how it is working.
+
+4.Implementation:
+	This project includes: all source files(.java), resource files(.properties) and this README.
+	The way I saw this problem: I have the entities Vacation, Location, Activity, Availability.
+	A Vacation object would have a Location, a set of Activities to perform and an Availability.
+	
+	An Availability object represents the season one vacation is available. For an easy work with
+	this class I used the season reported to this year. Therefore, I used 2 dates describing an 
+	interval, and that made my work easy with intersections.
+
+	Activity is an enum because I wanted activities to be part of some possible values, so that
+	all vacations will "speak the same language" in the matter of activities. Doing so, made my
+	query work easy. A Vacation object has, thus, an enumset of Activities.
+
+	Other than those above and name and price, a Vacation must have a Location. To rank 
+	locations I chose to build a tree, having the root named "globe". I have a class Node that
+	implements the basic functions of a node. I search trough this tree to find the right
+	place to insert my locations read from input. The leaf nodes have a list of the 
+	vacations available there. My Vacation class has a reference to a Node in my tree.
+
+	I used 2 parser clases, for parsing input and parsing and executing commands.
+
+	I have a Singleton class TripPlanner which is the core of this app. TripPlanner
+	has a reference to my tree and to a list of all vacations. Also TripPlanner implements
+	methods used for the functionality of the commands.
+
+	My Main class is used for executing my application and for showing some messages to the
+	user.
+
+This app remains an open project so if you find any bug please contact me.
+	
